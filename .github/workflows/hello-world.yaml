@@ -23,19 +23,10 @@ jobs:
           path: .
       - name: Build
         run: chmod +x ci/build-app.sh && ci/build-app.sh
+      - name: Unit Test
+        run: chmod +x ci/unit-test-app.sh && ci/unit-test-app.sh
       - name: Upload Repo
         uses: actions/upload-artifact@v3
         with:
           name: code
-          path: .
-  Test:
-    runs-on: ubuntu-latest
-    container: gradle:6-jdk11
-    needs: [Build]
-      - name: Download Code Artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: code
-          path: .
-      - name: Unit Test
-        run: chmod +x ci/unit-test-app.sh && ci/unit-test-app.sh
+          path: .    
