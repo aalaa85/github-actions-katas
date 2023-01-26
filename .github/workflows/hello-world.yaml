@@ -28,11 +28,11 @@ jobs:
         with:
           name: code
           path: .
-    Testing:
-      runs-on: ubuntu-latest
-      container: gradle:6-jdk11
-      needs: [Build]
-       - name: Download Code Artifacts
+  Testing:
+    runs-on: ubuntu-latest
+    container: gradle:6-jdk11
+    needs: [Build]
+      - name: Download Code Artifacts
         uses: actions/download-artifact@v3
         with:
           name: code
